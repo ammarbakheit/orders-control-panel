@@ -33,7 +33,7 @@ export default function Product() {
 
             <div class="w-full mt-12">
                 <p class="text-xl pb-3 flex items-center">
-                    <i class="fas fa-list mr-3"></i> Orders
+                    <i class="fas fa-list mr-3"></i> Product
                 </p>
                 <div class="bg-white overflow-auto">
                     <table class="text-left w-full border-collapse">
