@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../db/database.db"
+}
+
+// models
+model User {
+  id        Int       @id @default(autoincrement())
+  uuid      String    @unique @default(cuid())
+  name      String?
+  email     String    @unique
+  password  String
+  sessions  Session[]
+  orders    Order[]
+  createdAt DateTime  @default(now())
+}
+
+// Sessions
+model Session {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique @default(cuid())
+  user      User     @relation(fields: [useruuid], references: [uuid], onDelete: Cascade)
+  useruuid  String
+  valid     Boolean
+  userAgent String
+  createdAt DateTime @default(now())
+}
+
+// Product
+model Product {
+  id     Int                 @id @default(autoincrement())
+  uuid   String              @unique @default(cuid())
+  name   String
+  price  Decimal
+  orders ProductsAndOrders[]
+}
+
+model ProductsAndOrders {
+  id          Int     @id @default(autoincrement())
+  order       Order   @relation(fields: [orderuuid], references: [uuid], onDelete: Cascade)
+  orderuuid   String
+  product     Product @relation(fields: [productuuid], references: [uuid], onDelete: Cascade)
+  productuuid String
+}
+
+// Order
+model Order {
+  id        Int                 @id @default(autoincrement())
+  uuid      String              @unique @default(cuid())
+  user      User                @relation(fields: [useruuid], references: [uuid], onDelete: Cascade)
+  useruuid  String
+  products  ProductsAndOrders[]
+  total     Decimal
+  latitude  Decimal
+  longitude Decimal
+}
