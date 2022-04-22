@@ -1,0 +1,455 @@
+{
+	"info": {
+		"_postman_id": "331750da-39c9-4459-927f-40e59c6b638d",
+		"name": "orders-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ammar\",\r\n    \"email\": \"amar@gmail.com\",\r\n    \"password\": \"amr1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"amar@gmail.com\",\r\n    \"password\": \"amr1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/session",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-refresh",
+								"value": "{{refreshToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2000/api/session",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-refresh",
+								"type": "text",
+								"value": "{{refreshToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2000/api/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-refresh",
+								"type": "text",
+								"value": "{{refreshToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2000/api/me/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"me",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "all products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ammar\",\r\n    \"email\": \"amar@gmail.com\",\r\n    \"password\": \"amr1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/product/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"product",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ammar\",\r\n    \"email\": \"amar@gmail.com\",\r\n    \"password\": \"amr1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/product/0t3x4uKVQ__WzJloQu8jp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"product",
+								"0t3x4uKVQ__WzJloQu8jp"
+							],
+							"query": [
+								{
+									"key": "sds",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"iphone X\",\r\n    \"price\": \"160.000\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/product/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"name\": \"galaxy s22\",\r\n    \"price\": \"30.12\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/product/0t3x4uKVQ__WzJloQu8jp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"product",
+								"0t3x4uKVQ__WzJloQu8jp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "all orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ammar\",\r\n    \"email\": \"amar@gmail.com\",\r\n    \"password\": \"amr1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/order/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"order",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ammar\",\r\n    \"email\": \"amar@gmail.com\",\r\n    \"password\": \"amr1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/order/33nQQIExVtKfvmeJGsvh6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"order",
+								"33nQQIExVtKfvmeJGsvh6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"products\": [\r\n     {\r\n    \"uuid\": \"Xmg6DQ2JwoXMOywgeuRWc\",\r\n    \"name\": \"iphone 11\",\r\n    \"price\": \"30.12\"\r\n     },\r\n       {\r\n        \"uuid\": \"EWbf4MJwvXRrBsMSdZguD\",\r\n        \"name\": \"iphone 12\",\r\n        \"price\": \"30.12\"\r\n    }\r\n    ],\r\n    \"latitude\": \"12.1231\",\r\n    \"longitude\": \"14.1231\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/api/order/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "accessToken",
+			"value": ""
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		}
+	]
+}
